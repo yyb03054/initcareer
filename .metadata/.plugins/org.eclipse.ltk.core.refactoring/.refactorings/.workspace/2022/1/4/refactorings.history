@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;init-resume/src/main/webapp/resources/jqGrid/js/jquery-1.7.2.min.js&apos;" deleteContents="false" description="Delete resource &apos;init-resume/src/main/webapp/resources/jqGrid/js/jquery-1.7.2.min.js&apos;" element1="/init-resume/src/main/webapp/resources/jqGrid/js/jquery-1.7.2.min.js" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1642468770631"/>
+</session>

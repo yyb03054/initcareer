@@ -1,0 +1,14 @@
+@RequestMapping("/selectPdf")
+	   public ModelAndView saleListSell(String info_id, HttpServletRequest request, QualificationVO qualificationVO) throws Exception{
+		
+		/*qualificationVO.setId(id);*/
+		UserInfoVO personal_info = new UserInfoVO();
+		personal_info.setMember_id(info_id);
+		qualificationVO.setInfoId(info_id);
+		System.out.println("아이디"+info_id);
+		System.out.println("브이오"+qualificationVO);
+	       List<QualificationVO> qual = pdfService.qualifiSelect(info_id);
+	       ModelAndView mav = new ModelAndView("jsonView");
+		   mav.addObject("qual", qual);
+	       return mav;
+	   }
