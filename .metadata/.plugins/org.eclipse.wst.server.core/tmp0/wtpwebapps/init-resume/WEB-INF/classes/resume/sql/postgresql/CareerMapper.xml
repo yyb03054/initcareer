@@ -19,6 +19,7 @@
         <result property="career_id"            column="Career_id"/>
         <result property="rnum"                 column="rnum"/>
         <result property="totcnt"               column="totcnt"/>
+        <result property="primary_duty"         column="primary_duty"/>
 
     </resultMap> 
     
@@ -62,7 +63,7 @@
     <insert id="saveCareer" parameterType="hashMap">
       <![CDATA[
       INSERT INTO resume.resume_career_detail
-      (info_id, project_name, start_date, end_date, client_nm, task, occupation)
+      (info_id, project_name, start_date, end_date, client_nm, task, occupation, primary_duty)
       VALUES(
         #{info_id}
         ,#{project_name}
@@ -71,6 +72,7 @@
         ,${client_nm}
         ,${task}
         ,${occupation}
+        ,'${primary_duty}'
         );
       ]]>
     </insert>
@@ -94,6 +96,7 @@
             ,client_nm = ${client_nm} 
             ,task = ${task}
             ,occupation = ${occupation} 
+            ,primary_duty= '${primary_duty}'
         WHERE id = ${id}
       ]]>
     </update>

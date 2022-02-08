@@ -209,8 +209,10 @@ $(document).ready(function() {
                     var client_name = $('#careerList').jqGrid('getRowData',rowId).client_name;
                     var task = $('#careerList').jqGrid('getRowData',rowId).task;
                     var occupation = $('#careerList').jqGrid('getRowData',rowId).occupation;
+                    var primary_duty = $('#careerList').jqGrid('getRowData',rowId).primary_duty;
                     $("#update_career_id").val(id);
                     $("#update_career_Project_name").val(project_name);
+                    $("#update_career_Primary_duty").val(primary_duty);
                     $("#update_career_Start_date").val(date[0].trim());
                     $("#update_career_End_date").val(date[1].trim());
                     $("#update_career_Client_name option").filter(function(){return this.text == client_name;}).attr('selected',true);

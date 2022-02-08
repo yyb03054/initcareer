@@ -16,15 +16,17 @@ body::-webkit-scrollbar {
 }
 
 .searchTable{
-    width: 100%;
+    width: 15%;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: left;
-    display: none;
+    /* display: none; */
+    float:left;
 }
 
 .searchTable .searchTitle{
-    text-align: center;
+    text-align: left;
+    font-weight:bold;
 }
 
 .searchTable .searchButtonSet{
@@ -32,7 +34,7 @@ body::-webkit-scrollbar {
 }
 
 .searchTable td{
-    padding: 10px;
+    padding: 5px;
 }
 
 .form-control{

@@ -19,6 +19,8 @@
         <result property="reg_date"     column="reg_date"/>
         <result property="rnum"         column="rnum"/>
         <result property="totcnt"       column="totcnt"/>
+        <result property="career_year"  column="career_year"/>
+        <result property="work_year"  column="work_year"/>
         
     </resultMap>
     
@@ -34,6 +36,51 @@
                  ,p.phone 
                  ,p.email
                  ,p.area
+                 ,(
+																		SELECT CONCAT(CONCAT((COUNT(*)+29)/30/12,'년'),CONCAT(((COUNT(*)+29)/30)%12,'개월')) CAREER_YEAR
+																		  FROM 
+																		      (SELECT DATE
+																		         FROM
+																		             (SELECT DATE
+																		                FROM ( (WITH DATE_SERIES AS
+																							   (SELECT DATE(GENERATE_SERIES(TO_DATE('1950-01-01', 'YYYY-MM-DD')
+																						              , TO_DATE('2030-12-31', 'YYYY-MM-DD'),'1 day')) AS DATE
+																						       )
+																		                     SELECT DATE
+																		                       FROM DATE_SERIES ) ) G) a
+																	             JOIN (SELECT START_DATE
+																				            , END_DATE
+																	                     FROM RESUME.RESUME_CAREER_DETAIL R WHERE R.INFO_ID=P.ID
+																	    				   UNION SELECT START_DATE
+																	                        , END_DATE FROM RESUME.RESUME_CAREER_DETAIL R WHERE R.INFO_ID=P.ID
+																				  )
+																			  RESUME_CAREER_DETAIL
+																		   ON DATE >= START_DATE
+																	      AND DATE <= END_DATE
+															              GROUP BY DATE) result)
+																 ,(
+																   SELECT CONCAT(CONCAT((COUNT(*)+29)/30/12,'년'),CONCAT(((COUNT(*)+29)/30)%12,'개월')) WORK_YEAR
+																					FROM 
+																			      (SELECT DATE
+																			         FROM
+																			             (SELECT DATE
+																			                FROM ( ( WITH DATE_SERIES AS
+																								   ( SELECT DATE(GENERATE_SERIES(TO_DATE('1950-01-01', 'YYYY-MM-DD')
+																							              , TO_DATE('2030-12-31', 'YYYY-MM-DD'),'1 day')) AS DATE
+																							       )
+																			                     SELECT DATE
+																			                       FROM DATE_SERIES ) ) G) a
+																			              JOIN (SELECT START_DATE
+																						             , END_DATE
+																			                      FROM RESUME.RESUME_WORK_EXPERTENTCE
+																			                     WHERE INFO_ID=P.ID
+																			    					   UNION SELECT START_DATE
+																			                         , END_DATE FROM RESUME.RESUME_WORK_EXPERTENTCE WHERE INFO_ID=P.ID
+																							  )
+																							  RESUME_WORK_EXPERTENTCE
+																						   ON DATE >= START_DATE
+																					      AND DATE <= END_DATE
+																			              GROUP BY DATE) RESULT)       
                  ,p.birth
                  ,concat(ro.name, '/', rt.name) as occupation
                  ,ARRAY_TO_STRING(ARRAY_AGG(distinct qc.qualifi_name),',') as qualifi
@@ -76,7 +123,12 @@
             </if>
             <if test='career != ""'>
               <![CDATA[
-              and ${career} <= cyear
+              and ${career} <= cast(replace(substr(career_year,0,2),'년','') as integer)
+              ]]>
+            </if>
+            <if test='career_end != ""'>
+              <![CDATA[
+              and cast(replace(substr(career_year,0,2),'년','') as integer) <= ${career_end}
               ]]>
             </if>
             <if test='area != ""'>
@@ -84,7 +136,7 @@
               and p.area like concat('%', #{area}, '%')
               ]]>
             </if>
-            <if test='qualifi != ""'>
+            <if test='qualifi_nm != ""'>
               and p.id = q.info_id and (q.qualifi_nm in (${qualifi_nm}))
             </if>
             <if test='client_nm != ""'>
@@ -192,8 +244,8 @@
             ,address    = #{address}
             ,detailaddress    = #{detailaddress}
             ,occupation = ${occupation}
-            ,task       = ${task}
-            ,area		= #{area}
+            ,task       = COALESCE(${task},0)
+            ,area		= COALESCE(#{area},'')
         WHERE id = '${info_id}'
       ]]>
     </update>

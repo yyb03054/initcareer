@@ -14,6 +14,7 @@
         <result property="issuer"               column="Issuer"/>
         <result property="qualifi_id"           column="Qualifi_ID"/>
         <result property="totcnt"               column="totcnt"/>
+        <result property="qualifi_nm"   								column="qualifi_nm"/>
 
     </resultMap>
     

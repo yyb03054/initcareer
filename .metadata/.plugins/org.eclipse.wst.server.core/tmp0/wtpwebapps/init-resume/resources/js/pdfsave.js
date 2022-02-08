@@ -20,11 +20,12 @@
 	    while (heightLeft >= 20) {
 	        position = heightLeft - imgHeight;
 	        doc.addPage();
-	        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+	        doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
 	        heightLeft -= pageHeight;
 	    }
 	 
 	    // 파일 저장
-	    doc.save('file-name.pdf');
+	    var user_name= $('#user_name').val();
+	    doc.save(user_name+" 이력서");
 		});
 	}

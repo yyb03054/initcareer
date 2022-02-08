@@ -185,6 +185,7 @@
         SELECT w.start_date, w.end_date, w.company_name, w.department, t.name as task, s.name as spot ,o.name as occupation
         FROM resume.resume_work_expertentce w, resume.resume_task t, resume.resume_spot s ,resume.resume_occupation o
         WHERE w.info_id = #{info_id} and w.task = t.task_nm and s.spot_nm = w.spot_nm and o.occupation_nm = w.occupation
+        ORDER BY w.start_date
       ]]>
     </select>
 <!-- 기술경력 조회 -->

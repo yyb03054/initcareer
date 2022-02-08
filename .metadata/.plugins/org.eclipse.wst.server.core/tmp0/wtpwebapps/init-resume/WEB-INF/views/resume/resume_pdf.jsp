@@ -35,9 +35,14 @@ $(document).ready (function(){
 </script>    
 </head>
 <body>
-<a href="javascript:pdfSave();">pdf 저장</a>
+<div style="width:1000px; margin:0 auto;">
+	<button type="button" onclick="location.href='javascript:pdfSave();'">PDF 저장</button>
+</div>
 <div id="pdfDiv" style="width:1000px; margin:0 auto;">
-	<table border="1" width="990px">
+<br/>
+<br/>
+	<input type="hidden" id="user_name" name="user_name" value="${detailset.name}"/>
+	<table border="1" width="990px" cellspacing="0" style="border:gray">
 		<tr>
 			<td rowspan="7"  width ="85" height="113" align="center">
 			<c:if test="${detailset.imgname!=null}">
@@ -76,16 +81,16 @@ $(document).ready (function(){
 			<td colspan="8" align="center">${detailset.oname}&nbsp;/&nbsp;${detailset.tname}</td>
 		</tr>
 		<tr>
-			<th colspan="1" width = "50"  bgcolor="D5D5D5">기술경력</th>
+			<th colspan="1" width = "50"  bgcolor="D5D5D5">근무경력</th>
 			<td colspan="1"  align="center">${workDay.work_year}&nbsp;${workDay.work_month}</td>
-			<th colspan="1" width="50"  bgcolor="D5D5D5">근무경력</th>
+			<th colspan="1" width="50"  bgcolor="D5D5D5">기술경력</th>
 			<td colspan="1"  align="center">${careerDay.career_year}&nbsp;${careerDay.career_month}</td>
 		</tr>
 	</table>
-	<table border="1"width="990px">
+	<table border="1"width="990px" cellspacing="0" style="border:gray">
 		<!-- -----------------------근무경력사항-------------------------------- -->
-		<tr>
-			<th colspan="4" width = "790"  bgcolor="D5D5D5">근 무 경 력</th>
+		<tr>	
+			<th colspan="4" width = "790"  bgcolor="D5D5D5" >근 무 경 력</th>
 		</tr>
 		<tr>
 			<th width="100" bgcolor="D5D5D5" >회사명</th>
@@ -110,8 +115,8 @@ $(document).ready (function(){
 			</tr>
 		</c:if>
 		<!-- -----------------------자격증-------------------------------- -->
-		<tr>
-			<th colspan = "4" bgcolor="D5D5D5">기 술 자 격</th>
+		<tr style="border-top:black">
+			<th colspan = "4" bgcolor="D5D5D5" >기 술 자 격</th>
 		</tr>
 		<tr>
 			<th width="100" bgcolor="D5D5D5">자격증명</th>
@@ -136,7 +141,7 @@ $(document).ready (function(){
 			</tr>
 		</c:if>
 		<!-- -----------------------학력사항-------------------------------- -->
-		<tr>
+		<tr style="border-top:black">
 			<th colspan = "4" bgcolor="D5D5D5">학 력</th>
 		</tr>
 		<tr>
@@ -162,7 +167,7 @@ $(document).ready (function(){
 			</tr>
 		</c:if>
 		<!-- -----------------------교육사항-------------------------------- -->
-		<tr>
+		<tr style="border-top:black">
 			<th colspan = "4" bgcolor="D5D5D5">교 육</th>
 		</tr>
 		<tr>
@@ -188,7 +193,7 @@ $(document).ready (function(){
 			</tr>
 		</c:if>
 		<!-- -----------------------상훈-------------------------------- -->
-		<tr>
+		<tr style="border-top:black">
 			<th colspan = "4" bgcolor="D5D5D5">상 훈</th>
 		</tr>
 		<tr>
@@ -214,7 +219,7 @@ $(document).ready (function(){
 			</tr>
 		</c:if>
 		<!-- -----------------------기술경력-------------------------------- -->
-		<tr>
+		<tr style="border-top:black">
 			<th colspan = "5" bgcolor="D5D5D5">기 술 경 력</th>
 		</tr>
 		<!-- <tr>
@@ -240,7 +245,7 @@ $(document).ready (function(){
 				<th width="100" bgcolor="D5D5D5">업종</th>
 				<td align="center">${career.occupation} / ${career.task}</td>
 			</tr>
-			<tr style="border-bottom: black;">
+			<tr>
 				<td align="center" bgcolor="D5D5D5" style="font-weight: bold;">주요 업무</td>
 				<td colspan = "3"align="center">${career.primary_duty}</td>
 			</tr>
@@ -264,8 +269,7 @@ $(document).ready (function(){
 				<br/>
 				<p style = "text-align:center" id="today" ></p>
 				<br/>
-				<br/>
-				<p style = "text-align:right" >성  명  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)&nbsp;&nbsp;&nbsp;</p>
+				<p style = "text-align:center; font-size:30px;" >주식회사 인아이티</p>
 			</td>
 		</tr>
 	</table>

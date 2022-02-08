@@ -12,6 +12,7 @@
         <result property="issuer"       column="issuer"/>
         <result property="rnum"         column="rnum"/>
         <result property="totcnt"       column="totcnt"/>
+        <result property="qualifi_nm"   column="qualifi_nm"/>
     </resultMap>
     
     <select id="getAllQualification_code"  parameterType="hashMap"   resultType="QualificationCode"  >
