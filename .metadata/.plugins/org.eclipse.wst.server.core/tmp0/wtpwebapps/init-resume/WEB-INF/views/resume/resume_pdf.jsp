@@ -77,7 +77,7 @@ $(document).ready (function(){
 			<td colspan="8" align="center">${detailset.address}&nbsp;${detailset.detailaddress}</td>
 		</tr>
 		<tr>
-			<th bgcolor="D5D5D5">업 종</th>
+			<th bgcolor="D5D5D5">직종 / 직무</th>
 			<td colspan="8" align="center">${detailset.oname}&nbsp;/&nbsp;${detailset.tname}</td>
 		</tr>
 		<tr>
@@ -220,7 +220,7 @@ $(document).ready (function(){
 		</c:if>
 		<!-- -----------------------기술경력-------------------------------- -->
 		<tr style="border-top:black">
-			<th colspan = "5" bgcolor="D5D5D5">기 술 경 력</th>
+			<th colspan = "4" bgcolor="D5D5D5">기 술 경 력</th>
 		</tr>
 		<!-- <tr>
 			<th width="100" bgcolor="D5D5D5">사업명</th>
@@ -228,28 +228,23 @@ $(document).ready (function(){
 			<th width="100" bgcolor="D5D5D5">고객사</th>
 			<th width="100" bgcolor="D5D5D5">업종</th>
 		</tr> -->
-		<c:forEach var="career" items="${career}" varStatus="status">
+		
 			<tr>
 				<!-- <th rowspan="3" width="10" bgcolor="D5D5D5">1</th> -->
 				<th width="100" bgcolor="D5D5D5">사업명</th>
-				<td align="center">${career.project_name}</td>
-			
-			
-				<th width="120" bgcolor="D5D5D5">참여기간</th>
-				<td align="center">${career.start_date} ~ ${career.end_date}</td>
+			<th width="120" bgcolor="D5D5D5">참여기간</th>
+			<th width="100" bgcolor="D5D5D5">고객사</th>
+			<th width="100" bgcolor="D5D5D5">직종 / 직무</th>
 			</tr>
+			<c:forEach var="career" items="${career}" varStatus="status">
 			<tr>
-				<th width="100" bgcolor="D5D5D5">고객사</th>
+				<td align="center">${career.project_name}</td>
+				<td align="center">${career.start_date} ~ ${career.end_date}</td>
 				<td align="center">${career.client_name}</td>
-			
-				<th width="100" bgcolor="D5D5D5">업종</th>
 				<td align="center">${career.occupation} / ${career.task}</td>
 			</tr>
-			<tr>
-				<td align="center" bgcolor="D5D5D5" style="font-weight: bold;">주요 업무</td>
-				<td colspan = "3"align="center">${career.primary_duty}</td>
-			</tr>
 		</c:forEach>
+			
 		<c:if test="${career[0].project_name==null}">
 			<tr>
 				<td height="20"></td>

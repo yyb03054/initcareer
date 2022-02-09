@@ -134,7 +134,7 @@ $(document).ready(function() {
         datatype: 'json',
         mtype:'POST',
         editurl: '/detail/CareerEdit',
-        colNames:['','','','사업명','주요업무','사업기간','고객사','직종/직무','직종','직무'],
+        colNames:['','','','사업명','사업기간','고객사','직종/직무','직종','직무'],
         colModel:[
                 { name: 'myac', width: 30, fixed:true, sortable : false, formatter:'actions',align:"center", 
                 formatoptions:{ editbutton : false, delbutton:true}},
@@ -148,10 +148,6 @@ $(document).ready(function() {
                 editoptions:{ readonly:true,size:"50",maxlength:"50",defaultValue:link_id}},
 
                 {name:'project_name', index:'project_name', sortable : false, width:100, align:"center",
-                    editrules:{  required:true,edithidden:true },editable:true,
-                    editoptions:{size:"50",maxlength:"50"}},
-                    
-                {name:'primary_duty', index:'primary_duty', sortable : false, width:100, align:"center",
                     editrules:{  required:true,edithidden:true },editable:true,
                     editoptions:{size:"50",maxlength:"50"}},
 
@@ -209,10 +205,8 @@ $(document).ready(function() {
                     var client_name = $('#careerList').jqGrid('getRowData',rowId).client_name;
                     var task = $('#careerList').jqGrid('getRowData',rowId).task;
                     var occupation = $('#careerList').jqGrid('getRowData',rowId).occupation;
-                    var primary_duty = $('#careerList').jqGrid('getRowData',rowId).primary_duty;
                     $("#update_career_id").val(id);
                     $("#update_career_Project_name").val(project_name);
-                    $("#update_career_Primary_duty").val(primary_duty);
                     $("#update_career_Start_date").val(date[0].trim());
                     $("#update_career_End_date").val(date[1].trim());
                     $("#update_career_Client_name option").filter(function(){return this.text == client_name;}).attr('selected',true);

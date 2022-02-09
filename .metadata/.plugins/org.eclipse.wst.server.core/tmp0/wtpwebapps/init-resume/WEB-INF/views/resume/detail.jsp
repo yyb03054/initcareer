@@ -312,10 +312,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>주요 업무</td>
-                                        <td><input type="text" id="primary_duty" name="primary_duty" class="form-control career" placeholder="주요 업무"></td>
-                                    </tr>
-                                    <tr>
                                         <td>시작일</td>
                                         <td>
                                             <input type="text" id="career_Start_date" name="start_date" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control career" placeholder="시작일">
@@ -631,10 +627,6 @@
                                         <td>
                                             <input type="text"      id="update_career_Project_name" name="project_name" class="form-control career" placeholder="사업명">
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>주요 업무</td>
-                                        <td><input type="text" id="update_career_Primary_duty" name="primary_duty" class="form-control career" placeholder="주요 업무"></td>
                                     </tr>
                                     <tr>
                                         <td>시작일</td>
