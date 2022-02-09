@@ -37,6 +37,7 @@ $(document).ready (function(){
 <body>
 <div style="width:1000px; margin:0 auto;">
 	<button type="button" onclick="location.href='javascript:pdfSave();'">PDF 저장</button>
+	<button type="button" onclick="location.href='javascript:history.back();'">뒤로가기</button>
 </div>
 <div id="pdfDiv" style="width:1000px; margin:0 auto;">
 <br/>

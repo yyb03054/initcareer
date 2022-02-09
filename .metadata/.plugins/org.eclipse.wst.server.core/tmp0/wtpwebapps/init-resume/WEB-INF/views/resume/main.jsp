@@ -51,7 +51,8 @@
           <table class="searchTable" border="0" bgcolor="#D8D8D8" width="50px" style="float:center">
             <colgroup>
               <col width="3%"/>
-              <col width="97%"/>
+              <col width="96%"/>
+              <col width="1%"/>
               <%-- <col width="20%"/> --%>
             </colgroup>
             <tbody >
@@ -161,7 +162,7 @@
                 <!-- <td></td> -->
                 <td class="searchButtonSet">
                   <button type="button" class="btn btn-primary" onclick="searchUser()">검색</button>
-                  <button type="button" class="btn btn-danger" onclick="searchReset()">리셋</button>
+                  <button type="button" class="btn btn-danger" onclick="searchReset()">초기화</button>
                 </td>
               </tr>
             </tbody>
